@@ -18,10 +18,13 @@ public class Algebra {
    		System.out.println(sqrt(76123));
 	}  
 
-	// Returns x1 + x2
 
 	public static int plus(int x1, int x2) {
 		int j = 0;
+		if(x1 == 0)
+		{return x2;}
+		if(x2 == 0 )
+		{return x1;}
     if (x2 < 0) {
         while (j > x2) {
             j--;  
@@ -38,26 +41,28 @@ public class Algebra {
     return x1;
 }
 	
-	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
-		int j = 0;
+    int j = 0;
+    if (x2 == 0) {
+        return x1;
+    }
+    if (x1 == 0) {
+        return -x2;
+    }
     if (x2 > 0) {
-        while (j > x2) {
-            j++;  
-            x1--; 
+        while (j < x2) {
+            j++;
+            x1--;
         }
-    } 
-    else {
+    } else {
         while (j > x2) {
             j--;
-            x1++; 
+            x1++;
         }
     }
-
     return x1;
 }
 
-	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 		int k = 0;
 
@@ -82,7 +87,6 @@ public class Algebra {
 		return k;
 	}
 
-	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
 		if (x2 == 0){return 0;};
 		
@@ -114,7 +118,7 @@ public class Algebra {
         double increment = 0.0001;  
         double g = 1.0;             
        // int stepCounter = 0;
-        while (Math.abs(g * g - x) >= epsilon) {
+        while (Math.abs(g * g) < x) {
             g += increment;
             //stepCounter++;
         }

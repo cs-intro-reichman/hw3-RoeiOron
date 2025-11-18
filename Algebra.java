@@ -1,11 +1,6 @@
-// Implements algebraic operations and the square root function without using 
-// the Java operations a + b, a - b, a * b, a / b, a % b, and without calling 
-// Math.sqrt. All the functions in this class operate on int values and
-// return int values.
 
 public class Algebra {
 	public static void main(String args[]) {
-	    // Tests some of the operations
 	    System.out.println(plus(2,3));   // 2 + 3
 	    System.out.println(minus(7,2));  // 7 - 2
    		System.out.println(minus(2,7));  // 2 - 7
@@ -23,45 +18,105 @@ public class Algebra {
    		System.out.println(sqrt(76123));
 	}  
 
-	// Returns x1 + x2
+
 	public static int plus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
-	}
+		int j = 0;
+		if(x1 == 0)
+		{return x2;}
+		if(x2 == 0 )
+		{return x1;}
+    if (x2 < 0) {
+        while (j > x2) {
+            j--;  
+            x1--; 
+        }
+    } 
+    else {
+        while (j < x2) {
+            j++;
+            x1++; 
+        }
+    }
 
-	// Returns x1 - x2
+    return x1;
+}
+	
 	public static int minus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
-	}
+    int j = 0;
+    if (x2 == 0) {
+        return x1;
+    }
+    if (x1 == 0) {
+        return -x2;
+    }
+    if (x2 > 0) {
+        while (j < x2) {
+            j++;
+            x1--;
+        }
+    } else {
+        while (j > x2) {
+            j--;
+            x1++;
+        }
+    }
+    return x1;
+}
 
-	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int k = 0;
+
+		if (x1 == 0 || x2 == 0)
+		{return 0;}
+		
+		if (x1 < 0 && x2 < 0 || x1 > 0 && x2 < 0)
+		{x1 = -x1; x2 = -x2;}
+
+		for (int i = 0; i < x2; i++)
+		{k = plus(k,x1);}
+		return k;
 	}
 
-	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
-		// Replace the following statement with your code
-		return 0;
+		if (n==0)
+		{return 1;} 
+		int k = 1;
+		for (int i = 0; i < n; i++)
+		{k = times(k, x);}
+		return k;
 	}
 
-	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		if (x2 == 0){return 0;};
+		
+		int div = 0;
+		boolean isNegative = (x1 < 0 && x2 > 0) || (x1 > 0 && x2 < 0);
+		
+		if (x1 < 0){x1 = -x1;};
+		if (x2 < 0){x2 = -x2;};
+		
+		for(int i = x2; i <= x1; i = plus(i,x2)){
+			div++;
+		}
+
+		if (isNegative) {
+		return -div;
+		}
+
+		return div;
 	}
 
-	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int remainder = minus(x1, times(x2, div(x1, x2)));
+		return remainder;
 	}	
 
-	// Returns the integer part of sqrt(x) 
-	public static int sqrt(int x) {
-		// Replace the following statement with your code
-		return 0;
-	}	  	  
+public static double sqrt(int x) {
+        if (x <= 0) return 0.0;
+        int g = 1;
+        while (times(g, g) <= x) {
+            g++;
+        }
+        return (double) (g - 1);
+    }
 }

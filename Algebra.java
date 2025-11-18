@@ -112,16 +112,11 @@ public class Algebra {
 	}	
 
 public static double sqrt(int x) {
-        if (x < 0) return Double.NaN; 
-        double epsilon = 0.01;
-        double increment = 0.0001;
-        double g = 0.0;
-        while ((g + 1) * (g + 1) <= x) {
-            g = g + 1;
+        if (x <= 0) return 0.0;
+        int g = 1;
+        while (times(g, g) <= x) {
+            g++;
         }
-        while (g * g < x) {
-            g += increment;
-        }
-        return g;
+        return (double) (g - 1);
     }
 }

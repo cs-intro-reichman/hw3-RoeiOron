@@ -77,7 +77,6 @@ public class Algebra {
 		return k;
 	}
 
-	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
 		if (n==0)
 		{return 1;} 
@@ -107,7 +106,6 @@ public class Algebra {
 		return div;
 	}
 
-	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
 		int remainder = minus(x1, times(x2, div(x1, x2)));
 		return remainder;
@@ -116,7 +114,7 @@ public class Algebra {
 	public static double sqrt(int x) {
         double epsilon = 0.01;      
         double increment = 0.0001;  
-        double g = 1.0;             
+        double g = 0.0;             
        // int stepCounter = 0;
         while (Math.abs(g * g) < x) {
             g += increment;

@@ -59,7 +59,7 @@ public class Anagram {
             if (c >= 'A' && c <= 'Z') {
                 c = (char) (c + 32);
             }
-            if ((c >= 'a' && c <= 'z') || c == ' ') {
+            if (c >= 'a' && c <= 'z') {
                 newString = newString + c;
             }
         }

@@ -111,15 +111,17 @@ public class Algebra {
 		return remainder;
 	}	
 
-	public static double sqrt(int x) {
-        double epsilon = 0.01;      
-        double increment = 0.0001;  
-        double g = 0.0;             
-       // int stepCounter = 0;
-        while (Math.abs(g * g) < x) {
-            g += increment;
-            //stepCounter++;
+public static double sqrt(int x) {
+        if (x < 0) return Double.NaN; 
+        double epsilon = 0.01;
+        double increment = 0.0001;
+        double g = 0.0;
+        while ((g + 1) * (g + 1) <= x) {
+            g = g + 1;
         }
-		return g;
-	}
+        while (g * g < x) {
+            g += increment;
+        }
+        return g;
+    }
 }
